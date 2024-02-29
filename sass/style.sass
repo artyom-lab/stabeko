@@ -1,0 +1,240 @@
+@font-face
+	font-family: 'Inter'
+	src: url('../fonts/Inter-Thin.otf')
+	font-weight: 300
+@font-face
+	font-family: 'Inter'
+	src: url('../fonts/Inter-Regular.otf')
+	font-weight: normal
+@font-face
+	font-family: 'Inter'
+	src: url('../fonts/Inter-Medium.otf')
+	font-weight: 500
+@font-face
+	font-family: 'Inter'
+	src: url('../fonts/Inter-Bold.otf')
+	font-weight: bold
+
+$transition: 0.3s
+
+* 
+	outline: none !important
+
+a 
+	text-decoration: none !important
+	transition: $transition
+
+img 
+	max-width: 100%
+	height: auto
+
+body 
+	font-family: 'Inter', sans-serif
+	color: #213830
+	display: flex
+	flex-direction: column
+	min-height: 100vh
+	&.menubar-in 
+		overflow: hidden
+
+.row
+	margin-left: -15px
+	margin-right: -15px
+	[class*='col']
+		padding-left: 15px
+		padding-right: 15px
+
+.container-fluid
+	padding-left: 16px
+	padding-right: 16px
+	@media (min-width: 1440px)
+		padding-left: 30px
+		padding-right: 30px
+	@media (min-width: 2010px)
+		max-width: 2010px
+
+.brand
+	transition: $transition
+	display: block
+	line-height: 0.8
+	font-weight: 500
+	color: #c5d300
+	font-size: 40px
+	margin-right: auto
+	@media (min-width: 1200px)
+		font-size: 40px
+		margin-bottom: 30px
+	@media (min-width: 1950px)
+		font-size: 60px
+		margin-bottom: 80px
+	&:hover 
+		opacity: .8	
+	.f 
+		color: #213830
+		transition: $transition
+
+.navbar 
+	transition: $transition
+	padding: 16px 0
+	&.sticky
+		background-color: rgba(231, 236, 236, .8)
+	&.active
+		background-color: #213830
+		@media (max-width: 767.98px)
+			bottom: 0
+			align-items: start
+		.brand
+			.f 
+				color: #FFF
+		.nav-block
+			[class*='col']
+				opacity: 1
+				transform: translateY(-10px)
+				transition-duration: .3s
+				transition-delay: 250ms
+				+ [class*='col']
+					transition-delay: 350ms
+					+ [class*='col']
+						transition-delay: 450ms
+						+ [class*='col']
+							transition-delay: 550ms
+
+.navbar-collapse
+	margin-top: 24px
+	margin-left: -15px
+	margin-right: -15px
+
+.links 
+	a		
+		color: #FFF
+		display: inline-block
+		position: relative
+		z-index: 1
+		margin-bottom: 16px
+		@media (min-width: 1200px)
+			font-size: 0.97vw
+			margin-bottom: 22px
+		@media (min-width: 1950px)
+			margin-bottom: 42px
+		&:after 
+			content: ""
+			position: absolute
+			bottom: 5px
+			left: 0
+			width: 0
+			z-index: -1
+			border-bottom: 5px solid #64746e
+			transition: $transition
+		&:hover, &.active
+			&:after
+				width: 100%
+
+.brand-box
+	text-align: right
+	width: 100%
+	@media (max-width: 1199.98px)
+		display: flex
+
+.nav-block
+	padding: 34px 15px
+	max-height: calc(100vh - 62px)
+	overflow: auto
+	@media (min-width: 1950px)
+		padding: 80px 15px
+	[class*='col']
+		opacity: 0
+		transform: translateY(10px)
+
+.sandwich
+	display: inline-block
+	cursor: pointer
+	transition: $transition
+	padding: 0
+	border: 0
+	background-color: transparent
+	&:hover 
+		opacity: .7
+	&:before, span, &:after
+		width: 30px
+		@media (min-width: 1950px)
+			width: 50px
+	&:before, &:after
+		content: ''
+	span, &:after
+		margin-top: 6px
+		@media (min-width: 1950px)
+			margin-top: 10px
+	span, &:before, &:after
+		display: block
+		transition: $transition
+		transform-origin: right center
+		margin-left: auto
+		border-top: 3px solid #c5d300
+		@media (min-width: 1950px)
+			border-top: 4px solid #c5d300
+	&:not(.collapsed)
+		&:before
+			transform: rotate(-45deg)
+			width: 26px
+			@media (min-width: 1950px)
+				width: 40px
+		span
+			width: 0
+			opacity: 0
+		&:after
+			transform: rotate(45deg)
+			width: 26px
+			@media (min-width: 1950px)
+				width: 40px
+	&:hover 
+		opacity: .8
+
+.h5, h5
+	color: #FFF
+	font-weight: 300
+	font-size: 24px
+	margin-bottom: 16px
+	@media (min-width: 1200px)
+		font-size: 1.94vw
+		margin-bottom: 22px
+		@media (min-width: 1950px)
+			margin-bottom: 42px
+
+.footer
+	margin-top: auto
+	background: #213830
+	padding: 16px 0 50px
+	color: #FFF
+	@media (min-width: 1950px)
+		padding: 16px 0 80px
+	.brand
+		margin-bottom: 0
+		.f 
+			color: #FFF
+	.greenwood
+		img 
+			width: 120px
+			@media (min-width: 1950px)
+				width: 172px
+	.links 
+		a		
+			color: #FFF
+			display: inline-block
+			position: relative
+			z-index: 1
+			@media (min-width: 1950px)
+				margin-bottom: 28px
+	p 
+		@media (min-width: 1200px)
+			font-size: 0.97vw
+			margin-bottom: 50px
+
+
+
+
+
+
+
+
+
+
