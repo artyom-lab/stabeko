@@ -17,10 +17,21 @@ $(function () {
   $(".navbar").toggleClass("active");
   $("body").toggleClass("menubar-in");
   });
+    
+  // var box = $('.lines-box');
+  // var scrollTimeout;
+  // $(window).scroll(function(){
+  //     clearTimeout(scrollTimeout);
+  //     box.addClass('scrolled');
+  //     scrollTimeout = setTimeout(function() {
+  //         box.removeClass('scrolled');
+  //     }, 800);
+  //   });
 
   AOS.init({
-    duration: 500,
-    disable: 'mobile'
+    duration: 1000,
+    disable: 'mobile',
+    once: true,
   });
 
 });
