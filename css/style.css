@@ -31,6 +31,7 @@ img {
 body {
   font-family: "Inter", sans-serif;
   color: #213830;
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh; }
@@ -85,6 +86,8 @@ body {
       .navbar.sticky {
         padding-top: 8px;
         padding-bottom: 8px; } }
+    .navbar.sticky .close-popup:before, .navbar.sticky .close-popup:after {
+      border-color: #000; }
   .navbar.active {
     background-color: #213830; }
     @media (max-width: 767.98px) {
@@ -183,22 +186,22 @@ body {
       .sandwich span, .sandwich:before, .sandwich:after {
         border-top: 4px solid #c5d300; } }
   .sandwich:not(.collapsed):before {
-    transform: rotate(-45deg);
-    width: 26px; }
+    transform: translateY(-2px) rotate(-45deg);
+    width: 31px; }
     @media (min-width: 1950px) {
       .sandwich:not(.collapsed):before {
-        width: 40px; } }
+        width: 49px;
+        transform: translateY(-3px) rotate(-45deg); } }
   .sandwich:not(.collapsed) span {
     width: 0;
     opacity: 0; }
   .sandwich:not(.collapsed):after {
-    transform: rotate(45deg);
-    width: 26px; }
+    transform: translateY(2px) rotate(45deg);
+    width: 31px; }
     @media (min-width: 1950px) {
       .sandwich:not(.collapsed):after {
-        width: 40px; } }
-  .sandwich:hover {
-    opacity: 0.8; }
+        width: 49px;
+        transform: translateY(3px) rotate(45deg); } }
 
 .h1 a:hover, h1 a:hover, .h2 a:hover, h2 a:hover, .h3 a:hover, h3 a:hover {
   opacity: 0.8; }
@@ -214,11 +217,11 @@ body {
       transform: translate(-3.3px, -5px); } }
   @media (min-width: 768px) {
     .h1, h1, .h2, h2 {
-      transform: translate(-4.3px, -5.6px); } }
+      transform: translate(-2.3px, -5.6px); } }
   @media (min-width: 1200px) {
     .h1, h1, .h2, h2 {
       font-size: 4.44vw;
-      transform: translate(-0.34vw, -0.5vw); } }
+      transform: translate(-0.2vw, -0.5vw); } }
 
 .h1, h1 {
   color: #213830; }
@@ -279,7 +282,7 @@ p {
       font-size: 0.97vw; } }
 
 .comment {
-  transform: translate(-0.5px, -4px); }
+  transform: translate(0px, -3px); }
 
 .author {
   font-size: 17px; }
@@ -310,7 +313,9 @@ p {
   margin-top: auto;
   background: #213830;
   padding: 16px 0 50px;
-  color: #FFF; }
+  color: #FFF;
+  position: relative;
+  z-index: 2; }
   @media (min-width: 1950px) {
     .footer {
       padding: 16px 0 80px; } }
@@ -344,6 +349,24 @@ p {
     .footer-bottom p {
       font-size: 16px; } }
 
+.lines-box {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: 100vh;
+  padding-top: 16px;
+  overflow: hidden; }
+  .lines-box .container-fluid {
+    height: 100%; }
+  .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:before, .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:after {
+    background: transparent; }
+  .lines-box.scrolled .grids-horizontal {
+    border-color: transparent; }
+    .lines-box.scrolled .grids-horizontal .row-horizontal:before, .lines-box.scrolled .grids-horizontal .row-horizontal:after {
+      background: transparent; }
+
 .grids-vertical {
   position: absolute;
   top: 0;
@@ -362,20 +385,20 @@ p {
         content: "";
         top: 0;
         bottom: 0;
-        background: #DFDFDF;
+        background: #bdbdbd;
         transition: 0.5s;
         position: absolute;
         width: 1px; }
       .grids-vertical .row-vertical > [class*='col']:before {
-        left: 15px; }
+        left: 14px; }
         @media (max-width: 1439.98px) {
           .grids-vertical .row-vertical > [class*='col']:before {
-            left: 8px; } }
+            left: 7px; } }
       .grids-vertical .row-vertical > [class*='col']:after {
-        right: 15px; }
+        right: 14px; }
         @media (max-width: 1439.98px) {
           .grids-vertical .row-vertical > [class*='col']:after {
-            right: 8px; } }
+            right: 7px; } }
     @media (max-width: 1439.98px) {
       .grids-vertical .row-vertical {
         margin-left: -8px;
@@ -384,39 +407,43 @@ p {
           padding-left: 8px;
           padding-right: 8px; } }
 
-.grids-horizontal .row-horizontal {
-  height: 11.4345vw;
-  position: relative;
-  transition: 0.5s; }
-  @media (max-width: 1199.98px) {
-    .grids-horizontal .row-horizontal {
-      height: 22vw; } }
-  @media (max-width: 525.98px) {
-    .grids-horizontal .row-horizontal {
-      height: 30vw; } }
-  .grids-horizontal .row-horizontal:first-child {
-    border-top: 1px solid #DFDFDF; }
-  .grids-horizontal .row-horizontal:before, .grids-horizontal .row-horizontal:after {
-    content: "";
-    position: absolute;
-    height: 1px;
-    left: 0;
-    right: 0;
-    background: #DFDFDF;
+.grids-horizontal {
+  position: absolute;
+  top: 0;
+  left: 30px;
+  right: 30px;
+  bottom: 0;
+  transition: 0.3s;
+  border-top: 1px solid #bdbdbd; }
+  @media (max-width: 1439.98px) {
+    .grids-horizontal {
+      left: 16px;
+      right: 16px; } }
+  .grids-horizontal .row-horizontal {
+    height: 11.4345vw;
+    position: relative;
     transition: 0.5s; }
-  .grids-horizontal .row-horizontal:before {
-    bottom: 0; }
-  .grids-horizontal .row-horizontal:after {
-    bottom: 16px; }
+    @media (max-width: 1199.98px) {
+      .grids-horizontal .row-horizontal {
+        height: 22vw; } }
+    @media (max-width: 525.98px) {
+      .grids-horizontal .row-horizontal {
+        height: 30vw; } }
+    .grids-horizontal .row-horizontal:before, .grids-horizontal .row-horizontal:after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: 0;
+      background: #bdbdbd;
+      transition: 0.5s; }
+    .grids-horizontal .row-horizontal:before {
+      bottom: 1px; }
+    .grids-horizontal .row-horizontal:after {
+      bottom: 16px; }
 
-.lines-box {
-  padding-top: 16px; }
-  .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:before, .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:after {
-    background: transparent; }
-  .lines-box.scrolled .grids-horizontal .row-horizontal:first-child {
-    border-color: transparent; }
-  .lines-box.scrolled .grids-horizontal .row-horizontal:before, .lines-box.scrolled .grids-horizontal .row-horizontal:after {
-    background: transparent; }
+.main {
+  margin-top: 16px; }
 
 .img-wrap {
   width: 100%;
@@ -430,8 +457,25 @@ p {
   @media (min-width: 1200px) {
     .img-wrap:hover img {
       transform: scale(1.05); } }
+  .img-wrap.img-nowrap:hover img {
+    transform: none; }
+
+.section-gray {
+  padding-top: 15px;
+  margin-top: -15px;
+  position: relative; }
+  .section-gray:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #E9EBEA; }
 
 .section {
+  position: relative;
+  z-index: 2;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 30px;
@@ -450,91 +494,221 @@ p {
       grid-auto-rows: calc(30vw - 16px); } }
 
 .homepage-1 {
-  grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ." ". . . ."; }
+  grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ."; }
   @media (max-width: 1199.98px) {
     .homepage-1 {
-      grid-template-areas: ". ." "title title" "picture1 comment" "picture1 comment" ". ."; } }
+      grid-template-areas: ". ." "title title" "picture1 comment" "picture1 comment"; } }
   @media (max-width: 767.98px) {
     .homepage-1 {
-      grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" ". ."; } }
+      grid-template-areas: ". ." "title title" "title title" "picture1 comment" "picture1 comment"; } }
   @media (max-width: 575.98px) {
     .homepage-1 {
-      grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" "comment comment" ". ."; } }
+      grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" "comment comment"; } }
 
 .homepage-2 {
-  grid-template-areas: "title title . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2" ". . . ."; }
+  grid-template-areas: ". . . ." "title title . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2"; }
   @media (max-width: 1199.98px) {
     .homepage-2 {
-      grid-template-areas: "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2" ". ."; } }
+      grid-template-areas: ". ." "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2"; } }
   @media (max-width: 767.98px) {
     .homepage-2 {
-      grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."; } }
+      grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2"; } }
+  @media (max-width: 575.98px) {
+    .homepage-2 {
+      grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2"; } }
 
 .homepage-3 {
-  grid-template-areas: "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 subheading2 subheading2" "subheading1 subheading1 . ." ". . . ."; }
+  grid-template-areas: ". . . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 subheading2 subheading2" "subheading1 subheading1 . ."; }
   @media (max-width: 1199.98px) {
     .homepage-3 {
-      grid-template-areas: "picture1 subheading1" "picture1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" ". ."; } }
+      grid-template-areas: ". ." "picture1 subheading1" "picture1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2"; } }
   @media (max-width: 767.98px) {
     .homepage-3 {
-      grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."; } }
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2"; } }
 
 .homepage-4 {
-  grid-template-areas: "title title . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "subheading1 subheading1 . ." ". . . ."; }
+  grid-template-areas: ". . . ." "title title . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "subheading1 subheading1 . ."; }
   @media (max-width: 1199.98px) {
     .homepage-4 {
-      grid-template-areas: "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ."; } }
+      grid-template-areas: ". ." "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1"; } }
   @media (max-width: 767.98px) {
     .homepage-4 {
-      grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ."; } }
+      grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"; } }
 
 .homepage-5 {
-  grid-template-areas: ". . picture1 picture1" ". . picture1 picture1" ". . subheading1 subheading1" ". . . ." ". . . ."; }
+  grid-template-areas: ". . . ." ". . picture1 picture1" ". . picture1 picture1" ". . subheading1 subheading1" ". . . ."; }
   @media (max-width: 1199.98px) {
     .homepage-5 {
-      grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ." ". ."; } }
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ."; } }
   @media (max-width: 767.98px) {
     .homepage-5 {
-      grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."; } }
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ."; } }
 
 .homepage-6 {
-  grid-template-areas: "title title . ." "picture1 picture1 . ." "picture1 picture1 . ." "picture1 picture1 . ." "subheading1 subheading1 . ."; }
+  grid-template-areas: ". . . ." "title title . ."; }
   @media (max-width: 1199.98px) {
     .homepage-6 {
-      grid-template-areas: "title title" "picture1 subheading1" "picture1 subheading1"; } }
-  @media (max-width: 767.98px) {
-    .homepage-6 {
-      grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"; } }
+      grid-template-areas: ". ." "title title"; } }
 
 .homepage-7 {
-  grid-template-areas: "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2" ". . . ."; }
+  grid-template-areas: "picture1 picture1 . ." "picture1 picture1 . ." "picture1 picture1 . ." "subheading1 subheading1 . ." "picture2 picture2 picture3 picture3" "picture2 picture2 picture3 picture3" "subheading2 subheading2 picture3 picture3" ". . subheading3 subheading3"; }
   @media (max-width: 1199.98px) {
     .homepage-7 {
-      grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2" ". ."; } }
-  @media (max-width: 767.98px) {
+      grid-template-areas: "picture1 subheading1" "picture1 subheading1" "picture2 subheading2" "picture2 subheading2" "picture3 subheading3" "picture3 subheading3"; } }
+  @media (max-width: 575.98px) {
     .homepage-7 {
-      grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."; } }
+      grid-template-areas: "picture1 ." "picture1 ." "subheading1 subheading1" "subheading1 subheading1" "picture2 ." "picture2 ." "subheading2 subheading2" "subheading2 subheading2" "picture3 ." "picture3 ." "subheading3 subheading3" "subheading3 subheading3"; } }
 
 .homepage-8 {
-  grid-template-areas: "subheading1 subheading1 . ." "subheading1 subheading1 . ." ". . . ." ". . . ."; }
+  grid-template-areas: ". . . ." "subheading1 subheading1 . ." "subheading1 subheading1 . ."; }
   @media (max-width: 1199.98px) {
     .homepage-8 {
-      grid-template-areas: "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."; } }
+      grid-template-areas: ". ." "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
   @media (max-width: 767.98px) {
     .homepage-8 {
-      grid-template-areas: "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."; } }
+      grid-template-areas: ". ." "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
+
+.homepage-empty, .popup-empty {
+  grid-template-areas: ". . . ." ". . . ."; }
+  @media (max-width: 1199.98px) {
+    .homepage-empty, .popup-empty {
+      grid-template-areas: ". ." ". ."; } }
 
 .section .title {
-  grid-area: title; }
+  grid-area: title;
+  position: relative;
+  z-index: 2; }
 .section .picture1 {
-  grid-area: picture1; }
+  grid-area: picture1;
+  position: relative;
+  z-index: 2; }
 .section .picture2 {
   grid-area: picture2; }
+.section .picture3 {
+  grid-area: picture3; }
 .section .comment {
   grid-area: comment; }
+.section .comment2 {
+  grid-area: comment2; }
 .section .subheading1 {
   grid-area: subheading1; }
 .section .subheading2 {
   grid-area: subheading2; }
+.section .subheading3 {
+  grid-area: subheading3; }
+.section .subheading3 {
+  grid-area: subheading3; }
+
+.bg-header {
+  padding-top: 16px;
+  margin-top: -16px;
+  background-size: cover;
+  background-position: center center; }
+
+.stabeko {
+  color: #FFF;
+  font-size: 36px;
+  line-height: 0.8;
+  transform: translate(-3px, 0px); }
+  .stabeko:hover {
+    opacity: 0.7; }
+  @media (max-width: 767.98px) {
+    .stabeko {
+      font-size: 28px; } }
+
+.close-popup {
+  margin-left: auto;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  position: relative; }
+  @media (min-width: 1950px) {
+    .close-popup {
+      width: 48px;
+      height: 48px; } }
+  .close-popup:hover {
+    opacity: 0.7; }
+  .close-popup:before, .close-popup:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    display: inline-block;
+    transition: 0.3s;
+    border-top: 3px solid #FFF; }
+    @media (min-width: 1950px) {
+      .close-popup:before, .close-popup:after {
+        width: 48px; } }
+  .close-popup:before {
+    transform: translate(-50%, -50%) rotate(-45deg); }
+  .close-popup:after {
+    transform: translate(-50%, -50%) rotate(45deg); }
+
+.popup-1 {
+  grid-template-areas: "title . . ." ". . . ." ". . . ." ". . . ."; }
+  @media (max-width: 1199.98px) {
+    .popup-1 {
+      grid-template-areas: "title ." ". ."; } }
+  @media (max-width: 767.98px) {
+    .popup-1 {
+      grid-template-areas: "title ." ". ." ". ."; } }
+
+.popup-2 {
+  grid-template-areas: ". . . ." "title title title ." "comment comment . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
+  @media (max-width: 1199.98px) {
+    .popup-2 {
+      grid-template-areas: ". ." "title title" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+  @media (max-width: 767.98px) {
+    .popup-2 {
+      grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+  @media (max-width: 575.98px) {
+    .popup-2 {
+      grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+
+.popup-3 {
+  grid-template-areas: ". . . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
+  @media (max-width: 1199.98px) {
+    .popup-3 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1"; } }
+
+.popup-4 {
+  grid-template-areas: ". . . ." "picture1 picture1 picture2 picture3" "picture1 picture1 picture2 picture3" "picture1 picture1 comment comment2"; }
+  @media (max-width: 1199.98px) {
+    .popup-4 {
+      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2"; } }
+  @media (max-width: 767.98px) {
+    .popup-4 {
+      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"; } }
+  @media (max-width: 575.98px) {
+    .popup-4 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"; } }
+
+.popup-5 {
+  grid-template-areas: ". . . ." ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". picture1 picture1 picture1"; }
+  @media (max-width: 1199.98px) {
+    .popup-5 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1"; } }
+
+.popup-6 {
+  grid-template-areas: ". . . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2"; }
+  @media (max-width: 1199.98px) {
+    .popup-6 {
+      grid-template-areas: ". ." "picture1 picture2" "picture1 picture2"; } }
+  @media (max-width: 575.98px) {
+    .popup-6 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture2" "picture2 picture2"; } }
+
+.popup-7 {
+  grid-template-areas: ". . . ." "title title comment comment" "title title comment comment"; }
+  @media (max-width: 1199.98px) {
+    .popup-7 {
+      grid-template-areas: ". ." "title title" "comment comment" "comment comment"; } }
+  @media (max-width: 767.98px) {
+    .popup-7 {
+      grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment"; } }
+  @media (max-width: 575.98px) {
+    .popup-7 {
+      grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment"; } }
 
 /*# sourceMappingURL=style.css.map */

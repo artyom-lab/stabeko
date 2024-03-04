@@ -34,6 +34,7 @@ img
 body 
 	font-family: 'Inter', sans-serif
 	color: #213830
+	position: relative
 	display: flex
 	flex-direction: column
 	min-height: 100vh
@@ -83,6 +84,9 @@ body
 		@media (min-width: 1200px)
 			padding-top: 8px
 			padding-bottom: 8px
+		.close-popup
+			&:before, &:after 
+				border-color: #000
 	&.active
 		background-color: #213830
 		@media (max-width: 767.98px)
@@ -178,20 +182,20 @@ body
 			border-top: 4px solid #c5d300
 	&:not(.collapsed)
 		&:before
-			transform: rotate(-45deg)
-			width: 26px
+			transform: translateY(-2px) rotate(-45deg)
+			width: 31px
 			@media (min-width: 1950px)
-				width: 40px
+				width: 49px
+				transform: translateY(-3px) rotate(-45deg)
 		span
 			width: 0
 			opacity: 0
 		&:after
-			transform: rotate(45deg)
-			width: 26px
+			transform: translateY(2px) rotate(45deg)
+			width: 31px
 			@media (min-width: 1950px)
-				width: 40px
-	&:hover 
-		opacity: .8
+				width: 49px
+				transform: translateY(3px) rotate(45deg)
 
 .h1, h1, .h2, h2, .h3, h3
 	a 
@@ -207,10 +211,10 @@ body
 		font-size: 55px
 		transform: translate(-3.3px, -5px)
 	@media (min-width: 768px)
-		transform: translate(-4.3px, -5.6px)
+		transform: translate(-2.3px, -5.6px)
 	@media (min-width: 1200px)
 		font-size: 4.44vw
-		transform: translate(-0.34vw, -0.5vw)
+		transform: translate(-0.2vw, -0.5vw)
 
 .h1, h1
 	color: #213830
@@ -262,7 +266,7 @@ p
 		font-size: 0.97vw
 
 .comment
-	transform: translate(-0.5px, -4px)
+	transform: translate(0px, -3px)
 
 .author
 	font-size: 17px
@@ -295,6 +299,8 @@ p
 	background: #213830
 	padding: 16px 0 50px
 	color: #FFF
+	position: relative
+	z-index: 2
 	@media (min-width: 1950px)
 		padding: 16px 0 80px
 	.brand
@@ -327,6 +333,29 @@ p
 
 // LINES
 
+.lines-box
+	position: absolute
+	height: 100%
+	top: 0
+	left: 0
+	right: 0
+	min-height: 100vh
+	padding-top: 16px
+	overflow: hidden
+	.container-fluid
+		height: 100%
+	&.scrolled
+		.grids-vertical
+			.row-vertical
+				> [class*='col']
+					&:before, &:after
+						background: transparent
+		.grids-horizontal
+			border-color: transparent
+			.row-horizontal
+				&:before, &:after
+					background: transparent
+
 .grids-vertical
 	position: absolute
 	top: 0
@@ -344,18 +373,18 @@ p
 				content: ""
 				top: 0
 				bottom: 0
-				background: #DFDFDF
+				background: #bdbdbd
 				transition: .5s
 				position: absolute 
 				width: 1px
 			&:before
-				left: 15px
+				left: 14px
 				@media (max-width: 1439.98px)
-					left: 8px
+					left: 7px
 			&:after
-				right: 15px
+				right: 14px
 				@media (max-width: 1439.98px)
-					right: 8px
+					right: 7px
 		@media (max-width: 1439.98px)
 			margin-left: -8px
 			margin-right: -8px
@@ -364,6 +393,16 @@ p
 				padding-right: 8px
 
 .grids-horizontal
+	position: absolute
+	top: 0
+	left: 30px
+	right: 30px
+	bottom: 0
+	transition: $transition
+	border-top: 1px solid #bdbdbd
+	@media (max-width: 1439.98px)
+		left: 16px
+		right: 16px
 	.row-horizontal
 		height: 11.4345vw
 		position: relative
@@ -372,37 +411,23 @@ p
 			height: 22vw
 		@media (max-width: 525.98px)
 			height: 30vw
-		&:first-child 
-			border-top: 1px solid #DFDFDF
 		&:before, &:after
 			content: ""
 			position: absolute 
 			height: 1px
 			left: 0
 			right: 0
-			background: #DFDFDF
+			background: #bdbdbd
 			transition: .5s
 		&:before
-			bottom: 0
+			bottom: 1px
 		&:after
 			bottom: 16px
 
-.lines-box
-	padding-top: 16px
-	&.scrolled
-		.grids-vertical
-			.row-vertical
-				> [class*='col']
-					&:before, &:after
-						background: transparent
-		.grids-horizontal
-			.row-horizontal
-				&:first-child 
-					border-color: transparent
-				&:before, &:after
-					background: transparent
-
 // HOMEPAGE
+
+.main
+	margin-top: 16px
 
 .img-wrap
 	width: 100%
@@ -417,8 +442,27 @@ p
 		@media (min-width: 1200px)
 			img
 				transform: scale(1.05)
+	&.img-nowrap
+		&:hover
+			img 
+				transform: none
+
+.section-gray
+	padding-top: 15px
+	margin-top: -15px
+	position: relative
+	&:before
+		content: ""
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		background: #E9EBEA
 
 .section
+	position: relative
+	z-index: 2
 	display: grid
 	grid-template-columns: repeat(4, 1fr)
 	grid-column-gap: 30px
@@ -434,73 +478,186 @@ p
 		grid-auto-rows: calc(30vw - 16px)
 
 .homepage-1
-	grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ." ". . . ."
+	grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: ". ." "title title" "picture1 comment" "picture1 comment" ". ."
+		grid-template-areas: ". ." "title title" "picture1 comment" "picture1 comment" 
 	@media (max-width: 767.98px)
-		grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" ". ."
+		grid-template-areas: ". ." "title title" "title title" "picture1 comment" "picture1 comment" 
 	@media (max-width: 575.98px)
-		grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" "comment comment" ". ."
+		grid-template-areas: ". ." "title title" "title title" "picture1 picture1" "picture1 picture1" "comment comment" "comment comment"
 
 .homepage-2
-	grid-template-areas: "title title . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2" ". . . ."
+	grid-template-areas:  ". . . ." "title title . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2"
 	@media (max-width: 1199.98px)
-		grid-template-areas: "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2" ". ."
+		grid-template-areas: ". ." "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2"
 	@media (max-width: 767.98px)
-		grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."
+		grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2"
+	@media (max-width: 575.98px)
+		grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2"
 
 .homepage-3
-	grid-template-areas: "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 subheading2 subheading2" "subheading1 subheading1 . ." ". . . ."
+	grid-template-areas: ". . . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 subheading2 subheading2" "subheading1 subheading1 . ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: "picture1 subheading1" "picture1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" ". ."
+		grid-template-areas: ". ." "picture1 subheading1" "picture1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2"
 	@media (max-width: 767.98px)
-		grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2"
 
 .homepage-4
-	grid-template-areas: "title title . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "subheading1 subheading1 . ." ". . . ."
+	grid-template-areas: ". . . ." "title title . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "subheading1 subheading1 . ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ."
+		grid-template-areas: ". ." "title ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1"
 	@media (max-width: 767.98px)
-		grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ."
+		grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"
 
 .homepage-5
-	grid-template-areas: ". . picture1 picture1" ". . picture1 picture1" ". . subheading1 subheading1" ". . . ." ". . . ."
+	grid-template-areas: ". . . ." ". . picture1 picture1" ". . picture1 picture1" ". . subheading1 subheading1" ". . . ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ." ". ."
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" ". ."
 	@media (max-width: 767.98px)
-		grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" ". ."
 
 .homepage-6
-	grid-template-areas: "title title . ." "picture1 picture1 . ." "picture1 picture1 . ." "picture1 picture1 . ." "subheading1 subheading1 . ."
+	grid-template-areas: ". . . ." "title title . ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: "title title" "picture1 subheading1" "picture1 subheading1"
-	@media (max-width: 767.98px)
-		grid-template-areas: "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"
+		grid-template-areas: ". ." "title title"
 
 .homepage-7
-	grid-template-areas: "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "subheading1 subheading1 picture2 picture2" ". . subheading2 subheading2" ". . . ."
+	grid-template-areas: "picture1 picture1 . ." "picture1 picture1 . ." "picture1 picture1 . ." "subheading1 subheading1 . ." "picture2 picture2 picture3 picture3" "picture2 picture2 picture3 picture3" "subheading2 subheading2 picture3 picture3" ". . subheading3 subheading3"
 	@media (max-width: 1199.98px)
-		grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "picture2 subheading2" "picture2 subheading2" ". ."
-	@media (max-width: 767.98px)
-		grid-template-areas: "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "picture2 picture2" "picture2 picture2" "subheading2 subheading2" "subheading2 subheading2" ". ."
+		grid-template-areas: "picture1 subheading1" "picture1 subheading1" "picture2 subheading2" "picture2 subheading2" "picture3 subheading3" "picture3 subheading3"
+	@media (max-width: 575.98px)
+		grid-template-areas: "picture1 ." "picture1 ." "subheading1 subheading1" "subheading1 subheading1" "picture2 ." "picture2 ." "subheading2 subheading2" "subheading2 subheading2" "picture3 ." "picture3 ." "subheading3 subheading3" "subheading3 subheading3"
 
 .homepage-8
-	grid-template-areas: "subheading1 subheading1 . ." "subheading1 subheading1 . ." ". . . ." ". . . ."
+	grid-template-areas: ". . . ." "subheading1 subheading1 . ." "subheading1 subheading1 . ."
 	@media (max-width: 1199.98px)
-		grid-template-areas: "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."
+		grid-template-areas: ". ." "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"
 	@media (max-width: 767.98px)
-		grid-template-areas: "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" ". ." ". ."
+		grid-template-areas: ". ." "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"
+
+.homepage-empty, .popup-empty
+	grid-template-areas: ". . . ." ". . . ."
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." ". ."
 
 .section
 	.title
 		grid-area: title
+		position: relative
+		z-index: 2
 	.picture1
 		grid-area: picture1
+		position: relative
+		z-index: 2
 	.picture2
 		grid-area: picture2
+	.picture3
+		grid-area: picture3
 	.comment
 		grid-area: comment
+	.comment2
+		grid-area: comment2
 	.subheading1
 		grid-area: subheading1
 	.subheading2
 		grid-area: subheading2
+	.subheading3
+		grid-area: subheading3
+	.subheading3
+		grid-area: subheading3
+
+// POPUP
+
+.bg-header
+	padding-top: 16px
+	margin-top: -16px
+	background-size: cover
+	background-position: center center
+
+.stabeko
+	color: #FFF
+	font-size: 36px
+	line-height: 0.8
+	transform: translate(-3px, 0px)
+	&:hover
+		opacity: 0.7
+	@media (max-width: 767.98px)
+		font-size: 28px
+
+.close-popup
+	margin-left: auto
+	cursor: pointer
+	width: 30px
+	height: 30px
+	position: relative
+	@media (min-width: 1950px)
+		width: 48px
+		height: 48px
+	&:hover 
+		opacity: .7
+	&:before, &:after
+		content: ''
+		position: absolute
+		top: 50%
+		left: 50%
+		width: 30px
+		display: inline-block
+		transition: $transition
+		border-top: 3px solid #FFF
+		@media (min-width: 1950px)
+			width: 48px
+	&:before
+		transform: translate(-50%, -50%) rotate(-45deg)
+	&:after
+		transform: translate(-50%, -50%) rotate(45deg)
+
+.popup-1
+	grid-template-areas: "title . . ." ". . . ." ". . . ." ". . . ."
+	@media (max-width: 1199.98px)
+		grid-template-areas: "title ." ". ."
+	@media (max-width: 767.98px)
+		grid-template-areas: "title ." ". ." ". ."
+
+.popup-2
+	grid-template-areas: ". . . ." "title title title ." "comment comment . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "title title" "comment comment" "picture1 picture1" "picture1 picture1"
+	@media (max-width: 767.98px)
+		grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"
+	@media (max-width: 575.98px)
+		grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"
+
+.popup-3
+	grid-template-areas: ". . . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1"
+
+.popup-4
+	grid-template-areas: ". . . ." "picture1 picture1 picture2 picture3" "picture1 picture1 picture2 picture3" "picture1 picture1 comment comment2"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2"
+	@media (max-width: 767.98px)
+		grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"
+	@media (max-width: 575.98px)
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"
+
+.popup-5
+	grid-template-areas: ". . . ." ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". picture1 picture1 picture1"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1"
+
+.popup-6
+	grid-template-areas: ". . . ." "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2" "picture1 picture1 picture2 picture2"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "picture1 picture2" "picture1 picture2"
+	@media (max-width: 575.98px)
+		grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture2" "picture2 picture2"
+
+.popup-7
+	grid-template-areas: ". . . ." "title title comment comment" "title title comment comment"
+	@media (max-width: 1199.98px)
+		grid-template-areas: ". ." "title title" "comment comment" "comment comment"
+	@media (max-width: 767.98px)
+		grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment"
+	@media (max-width: 575.98px)
+		grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment"

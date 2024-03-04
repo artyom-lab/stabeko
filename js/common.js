@@ -18,15 +18,15 @@ $(function () {
   $("body").toggleClass("menubar-in");
   });
     
-  // var box = $('.lines-box');
-  // var scrollTimeout;
-  // $(window).scroll(function(){
-  //     clearTimeout(scrollTimeout);
-  //     box.addClass('scrolled');
-  //     scrollTimeout = setTimeout(function() {
-  //         box.removeClass('scrolled');
-  //     }, 800);
-  //   });
+  var box = $('.lines-box');
+  var scrollTimeout;
+  $(window).scroll(function(){
+      clearTimeout(scrollTimeout);
+      box.addClass('scrolled');
+      scrollTimeout = setTimeout(function() {
+          box.removeClass('scrolled');
+      }, 800);
+    });
 
   AOS.init({
     duration: 1000,
