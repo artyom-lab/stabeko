@@ -59,7 +59,7 @@ body {
 .brand {
   transition: 0.3s;
   display: block;
-  line-height: 0.8;
+  line-height: 0.9;
   font-weight: 500;
   color: #c5d300;
   font-size: 40px;
@@ -231,6 +231,18 @@ body {
   .h2 a, h2 a {
     color: #005e6d; }
 
+.h1-white {
+  font-weight: normal;
+  color: #FFF;
+  font-size: 40px; }
+  @media (min-width: 576px) {
+    .h1-white {
+      font-size: 60px; } }
+  @media (min-width: 1200px) {
+    .h1-white {
+      font-size: 7.68vw;
+      transform: translate(-0.4vw, -1vw); } }
+
 .h3, h3 {
   font-size: 26px;
   font-weight: bold;
@@ -258,6 +270,17 @@ h3 {
   .h3 a {
     color: #213830; }
 
+.h4, h4 {
+  font-size: 22px;
+  color: #213830;
+  transform: translate(-2px, -3px); }
+  @media (min-width: 1200px) {
+    .h4, h4 {
+      font-size: 1.86vw;
+      transform: translate(-2px, -0.2vw); } }
+  .h4 a, h4 a {
+    color: #213830; }
+
 .h5, h5 {
   color: #FFF;
   font-weight: 300;
@@ -271,6 +294,17 @@ h3 {
     .h5, h5 {
       margin-bottom: 42px; } }
 
+.h6, h6 {
+  font-size: 18px;
+  color: #213830;
+  font-weight: bold; }
+  @media (min-width: 1200px) {
+    .h6, h6 {
+      font-size: 1.29vw;
+      transform: translate(0px, -0.27vw); } }
+  .h6 a, h6 a {
+    color: #213830; }
+
 p {
   line-height: 1.35;
   margin-top: 0; }
@@ -283,6 +317,15 @@ p {
 
 .comment {
   transform: translate(0px, -3px); }
+
+.header-comment {
+  font-size: 20px;
+  color: #FFF;
+  transform: translate(0px, -3px); }
+  @media (min-width: 1200px) {
+    .header-comment {
+      font-size: 1.45vw;
+      transform: translate(0px, -0.3vw); } }
 
 .author {
   font-size: 17px; }
@@ -568,34 +611,26 @@ p {
     .homepage-8 {
       grid-template-areas: ". ." "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
 
-.homepage-empty, .popup-empty {
+.grids-empty {
   grid-template-areas: ". . . ." ". . . ."; }
   @media (max-width: 1199.98px) {
-    .homepage-empty, .popup-empty {
+    .grids-empty {
       grid-template-areas: ". ." ". ."; } }
 
 .section .title {
-  grid-area: title;
-  position: relative;
-  z-index: 2; }
+  grid-area: title; }
 .section .picture1 {
-  grid-area: picture1;
-  position: relative;
-  z-index: 2; }
+  grid-area: picture1; }
 .section .picture2 {
   grid-area: picture2; }
 .section .picture3 {
   grid-area: picture3; }
 .section .comment {
   grid-area: comment; }
-.section .comment2 {
-  grid-area: comment2; }
 .section .subheading1 {
   grid-area: subheading1; }
 .section .subheading2 {
   grid-area: subheading2; }
-.section .subheading3 {
-  grid-area: subheading3; }
 .section .subheading3 {
   grid-area: subheading3; }
 
@@ -655,16 +690,16 @@ p {
       grid-template-areas: "title ." ". ." ". ."; } }
 
 .popup-2 {
-  grid-template-areas: ". . . ." "title title title ." "comment comment . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
+  grid-template-areas: ". . . ." "title title title ." "subheading1 subheading1 . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
   @media (max-width: 1199.98px) {
     .popup-2 {
-      grid-template-areas: ". ." "title title" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+      grid-template-areas: ". ." "title title" "subheading1 subheading1" "picture1 picture1" "picture1 picture1"; } }
   @media (max-width: 767.98px) {
     .popup-2 {
-      grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+      grid-template-areas: ". ." "title title" "title title" "subheading1 subheading1" "subheading1 subheading1" "picture1 picture1" "picture1 picture1"; } }
   @media (max-width: 575.98px) {
     .popup-2 {
-      grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" "comment comment" "comment comment" "picture1 picture1" "picture1 picture1"; } }
+      grid-template-areas: ". ." "title title" "title title" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "picture1 picture1" "picture1 picture1"; } }
 
 .popup-3 {
   grid-template-areas: ". . . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
@@ -673,16 +708,16 @@ p {
       grid-template-areas: ". ." "picture1 picture1" "picture1 picture1"; } }
 
 .popup-4 {
-  grid-template-areas: ". . . ." "picture1 picture1 picture2 picture3" "picture1 picture1 picture2 picture3" "picture1 picture1 comment comment2"; }
+  grid-template-areas: ". . . ." "picture1 picture1 picture2 picture3" "picture1 picture1 picture2 picture3" "picture1 picture1 subheading1 subheading2"; }
   @media (max-width: 1199.98px) {
     .popup-4 {
-      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2"; } }
+      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "subheading1 subheading2"; } }
   @media (max-width: 767.98px) {
     .popup-4 {
-      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"; } }
+      grid-template-areas: ". ." "picture1 ." "picture1 ." "picture2 picture3" "picture2 picture3" "subheading1 subheading2" "subheading1 subheading2"; } }
   @media (max-width: 575.98px) {
     .popup-4 {
-      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture3" "picture2 picture3" "comment comment2" "comment comment2"; } }
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture3" "picture2 picture3" "subheading1 subheading2" "subheading1 subheading2"; } }
 
 .popup-5 {
   grid-template-areas: ". . . ." ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". picture1 picture1 picture1"; }
@@ -700,15 +735,48 @@ p {
       grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture2 picture2" "picture2 picture2"; } }
 
 .popup-7 {
-  grid-template-areas: ". . . ." "title title comment comment" "title title comment comment"; }
+  grid-template-areas: ". . . ." "title title subheading1 subheading1" "title title subheading1 subheading1"; }
   @media (max-width: 1199.98px) {
     .popup-7 {
-      grid-template-areas: ". ." "title title" "comment comment" "comment comment"; } }
+      grid-template-areas: ". ." "title title" "subheading1 subheading1" "subheading1 subheading1"; } }
   @media (max-width: 767.98px) {
     .popup-7 {
-      grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment"; } }
+      grid-template-areas: ". ." "title title" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
   @media (max-width: 575.98px) {
     .popup-7 {
-      grid-template-areas: ". ." "title title" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment" "comment comment"; } }
+      grid-template-areas: ". ." "title title" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
+
+.content-1 {
+  grid-template-areas: ". . . ." "title title title ." "comment . . ." ". . . ." ". . . ."; }
+  @media (max-width: 1199.98px) {
+    .content-1 {
+      grid-template-areas: ". ." "title title" "comment comment" "comment comment" ". ."; } }
+  @media (max-width: 575.98px) {
+    .content-1 {
+      grid-template-areas: ". ." "title title" "title title" "comment comment" "comment comment" ". ."; } }
+
+.content-2 {
+  grid-template-areas: ". . . ." "title title picture1 picture1" "subheading1 subheading1 picture1 picture1" "subheading1 subheading1 picture1 picture1"; }
+  @media (max-width: 1199.98px) {
+    .content-2 {
+      grid-template-areas: ". ." "title title" "subheading1 picture1" "subheading1 picture1" "subheading1 ."; } }
+  @media (max-width: 767.98px) {
+    .content-2 {
+      grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"; } }
+  @media (max-width: 575.98px) {
+    .content-2 {
+      grid-template-areas: ". ." "title title" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
+
+.content-3 {
+  grid-template-areas: ". . . ." ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". picture1 picture1 picture1" ". subheading1 subheading1 ." ". subheading1 subheading1 ." ". subheading1 subheading1 ."; }
+  @media (max-width: 1199.98px) {
+    .content-3 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"; } }
+  @media (max-width: 767.98px) {
+    .content-3 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1"; } }
+  @media (max-width: 575.98px) {
+    .content-3 {
+      grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
 
 /*# sourceMappingURL=style.css.map */
