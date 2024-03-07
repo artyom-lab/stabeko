@@ -800,12 +800,10 @@ p {
   height: 100%;
   transition: 1s;
   opacity: 0;
-  z-index: 1050;
-  visibility: hidden;
   pointer-events: none; }
   .popup.active {
     opacity: 1;
-    visibility: visible;
+    z-index: 1050;
     pointer-events: initial; }
   .popup .popup-top {
     background: #FFF; }
