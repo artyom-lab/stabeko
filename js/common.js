@@ -81,5 +81,14 @@ $(function () {
     parent.$("body").removeClass("menubar-in");
   });
 
+  $('.popup').on('load', function() {
+    $(this).contents().scroll(function() {
+      if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        $(".popup").removeClass("active");
+        $("body").removeClass("menubar-in");
+      }
+    });
+  });
+
 });
 
