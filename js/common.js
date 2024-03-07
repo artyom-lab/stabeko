@@ -76,7 +76,7 @@ $(function () {
     $("body").addClass("menubar-in");
   });
 
-  $(".modal-close, close-popup").on("click", function() {
+  $(".modal-close, .close-popup").on("click", function() {
     parent.$(".popup").removeClass("active");
     parent.$("body").removeClass("menubar-in");
   });
