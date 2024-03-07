@@ -490,7 +490,8 @@ p {
       bottom: 16px; }
 
 .main {
-  margin-top: 16px; }
+  margin-top: 16px;
+  background: #FFF; }
 
 .img-wrap {
   width: 100%;
