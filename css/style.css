@@ -399,7 +399,8 @@ p {
   min-height: 100vh;
   padding-top: 16px;
   overflow: hidden;
-  z-index: 0; }
+  z-index: 0;
+  transition: opacity 1.5s ease; }
   .lines-box .container-fluid {
     height: 100%; }
   .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:before, .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:after {
@@ -410,6 +411,8 @@ p {
       background: transparent; }
   .lines-box.lines-box-popup {
     height: calc(100% - 100vh); }
+  .lines-box.hidden {
+    opacity: 0; }
 
 .grids-vertical {
   position: absolute;
@@ -515,6 +518,7 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: -2;
     background: #E9EBEA; }
 
 .section {
@@ -797,7 +801,7 @@ p {
   opacity: 0;
   pointer-events: none; }
   .popup.active {
-    opacity: 0.8;
+    opacity: 1;
     z-index: 2000;
     pointer-events: initial; }
     .popup.active .wrapper .navbar, .popup.active .wrapper .main {

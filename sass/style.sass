@@ -382,6 +382,7 @@ p
 	padding-top: 16px
 	overflow: hidden
 	z-index: 0
+	transition: opacity 1.5s ease
 	.container-fluid
 		height: 100%
 	&.scrolled
@@ -397,6 +398,8 @@ p
 					background: transparent
 	&.lines-box-popup
 		height: calc(100% - 100vh)
+	&.hidden
+		opacity: 0
 
 .grids-vertical
 	position: absolute
@@ -500,6 +503,7 @@ p
 		bottom: 0
 		left: 0
 		right: 0
+		z-index: -2
 		background: #E9EBEA
 
 .section
@@ -727,11 +731,8 @@ p
 // MODAL-CLOSE
 
 .wrapper
-	// position: relative
-	// z-index: 1
 	&.hidden
 		transition: opacity 1.5s ease
-		// transition-delay: 0.5s
 		opacity: 0
 	&.visible
 		opacity: 1
@@ -746,7 +747,7 @@ p
 	opacity: 0
 	pointer-events: none
 	&.active
-		opacity: .8
+		opacity: 1
 		z-index: 2000
 		pointer-events: initial
 		.wrapper
