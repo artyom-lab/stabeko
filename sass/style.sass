@@ -17,6 +17,8 @@
 
 $transition: 0.3s
 
+$delay: 350ms
+
 * 
 	outline: none !important
 
@@ -98,12 +100,10 @@ body
 				transform: translateY(-10px)
 				transition-duration: .3s
 				transition-delay: 250ms
-				+ [class*='col']
-					transition-delay: 350ms
-					+ [class*='col']
-						transition-delay: 450ms
-						+ [class*='col']
-							transition-delay: 550ms
+				@for $i from 2 through 4
+					& + [class*='col']
+						transition-delay: $delay
+						$delay: $delay + 100ms
 	.navbar-collapse
 		margin-top: 24px
 		margin-left: -15px
@@ -765,3 +765,21 @@ p
 		display: block
 		color: #FFF
 		transition: top $transition ease
+
+#popup
+	.modal-dialog
+		max-width: 100%
+		margin: 0
+		.modal-content
+			background: transparent
+			border: 0
+			border-radius: 0
+			min-height: 100vh
+			position: relative
+			.close-popup
+				position: fixed
+				top: 16px
+				right: 46px
+				z-index: 3
+				&:before, &:after
+					border-color: #000

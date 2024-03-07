@@ -99,10 +99,10 @@ body {
       transition-delay: 250ms; }
       .navbar.active .nav-block [class*='col'] + [class*='col'] {
         transition-delay: 350ms; }
-        .navbar.active .nav-block [class*='col'] + [class*='col'] + [class*='col'] {
-          transition-delay: 450ms; }
-          .navbar.active .nav-block [class*='col'] + [class*='col'] + [class*='col'] + [class*='col'] {
-            transition-delay: 550ms; }
+      .navbar.active .nav-block [class*='col'] + [class*='col'] {
+        transition-delay: 350ms; }
+      .navbar.active .nav-block [class*='col'] + [class*='col'] {
+        transition-delay: 350ms; }
   .navbar .navbar-collapse {
     margin-top: 24px;
     margin-left: -15px;
@@ -819,5 +819,22 @@ p {
     display: block;
     color: #FFF;
     transition: top 0.3s ease; }
+
+#popup .modal-dialog {
+  max-width: 100%;
+  margin: 0; }
+  #popup .modal-dialog .modal-content {
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    min-height: 100vh;
+    position: relative; }
+    #popup .modal-dialog .modal-content .close-popup {
+      position: fixed;
+      top: 16px;
+      right: 46px;
+      z-index: 3; }
+      #popup .modal-dialog .modal-content .close-popup:before, #popup .modal-dialog .modal-content .close-popup:after {
+        border-color: #000; }
 
 /*# sourceMappingURL=style.css.map */

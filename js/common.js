@@ -70,7 +70,7 @@ $(function () {
     once: true,
   });
 
-  // POPUP
+  // POPUP-IFRAME
   $(".btn-popup").on("click", function() {
     $(".popup").addClass("active");
     $("body").addClass("menubar-in");
