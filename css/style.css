@@ -82,10 +82,6 @@ body {
   padding: 16px 0; }
   .navbar.sticky {
     background-color: rgba(231, 236, 236, 0.8); }
-    @media (min-width: 1200px) {
-      .navbar.sticky {
-        padding-top: 8px;
-        padding-bottom: 8px; } }
     .navbar.sticky .close-popup:before, .navbar.sticky .close-popup:after {
       border-color: #000; }
   .navbar.active {
@@ -203,7 +199,7 @@ body {
         width: 49px;
         transform: translateY(3px) rotate(45deg); } }
 
-.h1 a:hover, h1 a:hover, .h2 a:hover, h2 a:hover, .h3 a:hover, h3 a:hover {
+.h1 a:hover, h1 a:hover, .h2 a:hover, h2 a:hover, .h3 a:hover, h3 a:hover, .h4 a:hover, h4 a:hover, .h5 a:hover, h5 a:hover, .h6 a:hover, h6 a:hover {
   opacity: 0.8; }
 
 .h1, h1, .h2, h2 {
@@ -225,6 +221,8 @@ body {
 
 .h1, h1 {
   color: #213830; }
+  .h1 a, h1 a {
+    color: #213830; }
 
 .h2, h2 {
   color: #005e6d; }
@@ -400,7 +398,8 @@ p {
   right: 0;
   min-height: 100vh;
   padding-top: 16px;
-  overflow: hidden; }
+  overflow: hidden;
+  z-index: 0; }
   .lines-box .container-fluid {
     height: 100%; }
   .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:before, .lines-box.scrolled .grids-vertical .row-vertical > [class*='col']:after {
@@ -409,6 +408,8 @@ p {
     border-color: transparent; }
     .lines-box.scrolled .grids-horizontal .row-horizontal:before, .lines-box.scrolled .grids-horizontal .row-horizontal:after {
       background: transparent; }
+  .lines-box.lines-box-popup {
+    height: calc(100% - 100vh); }
 
 .grids-vertical {
   position: absolute;
@@ -519,6 +520,7 @@ p {
 .section {
   position: relative;
   z-index: 2;
+  transition: opacity 1.5s ease;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 30px;
@@ -778,5 +780,38 @@ p {
   @media (max-width: 575.98px) {
     .content-3 {
       grid-template-areas: ". ." "picture1 picture1" "picture1 picture1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1" "subheading1 subheading1"; } }
+
+.wrapper.hidden {
+  transition: opacity 1.5s ease;
+  opacity: 0; }
+.wrapper.visible {
+  opacity: 1; }
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 1s;
+  opacity: 0;
+  pointer-events: none; }
+  .popup.active {
+    opacity: 0.8;
+    z-index: 2000;
+    pointer-events: initial; }
+    .popup.active .wrapper .navbar, .popup.active .wrapper .main {
+      opacity: 1; }
+
+.modal-close {
+  height: 100vh;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.8);
+  text-align: center; }
+  .modal-close .to-review {
+    font-size: 20px;
+    display: block;
+    color: #FFF;
+    transition: top 0.3s ease; }
 
 /*# sourceMappingURL=style.css.map */
