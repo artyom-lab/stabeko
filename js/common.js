@@ -7,7 +7,7 @@ $(function () {
     linesBox.addClass('hidden');
     setTimeout(function() {
       linesBox.removeClass('hidden');
-    }, 1500);
+    }, 1300);
   });
 
   function headerSticky() {
@@ -36,9 +36,9 @@ $(function () {
     box.addClass('scrolled');
     scrollTimeout = setTimeout(function() {
     box.removeClass('scrolled');
-    }, 800);
+    }, 400);
   });
-  }, 1500);
+  }, 2000);
 
   $(window).on("scroll", function() {
     if ($('.modal-close').length > 0) {
