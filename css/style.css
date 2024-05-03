@@ -708,10 +708,10 @@ p {
   grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . ."; }
   @media (max-width: 1199.98px) {
     .popup-1 {
-      grid-template-areas: "title ." ". ."; } }
+      grid-template-areas: ". ." ". ."; } }
   @media (max-width: 767.98px) {
     .popup-1 {
-      grid-template-areas: "title ." ". ." ". ."; } }
+      grid-template-areas: ". ." ". ." ". ."; } }
 
 .popup-2 {
   grid-template-areas: ". . . ." "title title title ." "subheading1 subheading1 . ." "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1" "picture1 picture1 picture1 picture1"; }
