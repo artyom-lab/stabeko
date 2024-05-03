@@ -85,6 +85,9 @@ body {
   padding: 16px 0; }
   .navbar.sticky .close-popup:before, .navbar.sticky .close-popup:after {
     border-color: #000; }
+  .navbar.sticky .popup-logo {
+    opacity: 0;
+    pointer-events: none; }
   .navbar.active {
     background-color: #213830; }
     @media (max-width: 767.98px) {
@@ -499,8 +502,7 @@ p {
       bottom: 16px; }
 
 .main {
-  margin-top: 16px;
-  background: #FFF; }
+  margin-top: 16px; }
 
 .img-wrap {
   width: 100%;
@@ -650,27 +652,32 @@ p {
 .section .subheading3 {
   grid-area: subheading3; }
 
+.navbar-popup {
+  pointer-events: none; }
+
 .bg-header {
   padding-top: 16px;
   margin-top: -16px;
   background-size: cover;
   background-position: center center; }
 
-.stabeko {
+.popup-logo {
   color: #FFF;
   font-size: 36px;
   display: inline-block;
   line-height: 0.8;
+  pointer-events: initial;
   transform: translate(-3px, 0px); }
-  .stabeko:hover {
+  .popup-logo:hover {
     opacity: 0.7; }
   @media (max-width: 767.98px) {
-    .stabeko {
+    .popup-logo {
       font-size: 28px; } }
 
 .close-popup {
   margin-left: auto;
   cursor: pointer;
+  pointer-events: initial;
   width: 30px;
   height: 30px;
   position: relative; }
@@ -698,7 +705,7 @@ p {
     transform: translate(-50%, -50%) rotate(45deg); }
 
 .popup-1 {
-  grid-template-areas: "title . . ." ". . . ." ". . . ." ". . . ."; }
+  grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . ."; }
   @media (max-width: 1199.98px) {
     .popup-1 {
       grid-template-areas: "title ." ". ."; } }

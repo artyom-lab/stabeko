@@ -19,6 +19,14 @@ $transition: 0.3s
 
 $delay: 350ms
 
+$color-white: #FFF
+$color-black: #000
+$color-darkgray: #213830
+$color-yellow: #c5d300
+$color-darkblue: #005e6d
+$color-h3: #97b2b0
+$color-lines: rgba(217, 217, 217, 0.5)
+
 * 
 	outline: none !important
 
@@ -31,11 +39,11 @@ img
 	height: auto
 
 .darkgray
-	color: #213830 !important
+	color: $color-darkgray !important
 
 body 
 	font-family: 'Inter', sans-serif
-	color: #213830
+	color: $color-darkgray
 	position: relative
 	display: flex
 	flex-direction: column
@@ -65,7 +73,7 @@ body
 	display: block
 	line-height: 0.9
 	font-weight: 500
-	color: #c5d300
+	color: $color-yellow
 	font-size: 40px
 	transform: translate(-3px, -1px)
 	margin-right: auto
@@ -78,25 +86,27 @@ body
 	&:hover 
 		opacity: .8	
 	.f 
-		color: #213830
+		color: $color-darkgray
 		transition: $transition
 
 .navbar 
 	transition: $transition
 	padding: 16px 0
 	&.sticky
-		// background-color: rgba(231, 236, 236, .8)
 		.close-popup
 			&:before, &:after 
-				border-color: #000
+				border-color: $color-black
+		.popup-logo
+			opacity: 0
+			pointer-events: none
 	&.active
-		background-color: #213830
+		background-color: $color-darkgray
 		@media (max-width: 767.98px)
 			bottom: 0
 			align-items: start
 		.brand
 			.f 
-				color: #FFF
+				color: $color-white
 		.nav-block
 			[class*='col']
 				opacity: 1
@@ -114,7 +124,7 @@ body
 
 .links 
 	a		
-		color: #FFF
+		color: $color-white
 		display: inline-block
 		position: relative
 		z-index: 1
@@ -179,9 +189,9 @@ body
 		transition: $transition
 		transform-origin: right center
 		margin-left: auto
-		border-top: 3px solid #c5d300
+		border-top: 3px solid $color-yellow
 		@media (min-width: 1950px)
-			border-top: 4px solid #c5d300
+			border-top: 4px solid $color-yellow
 	&:not(.collapsed)
 		&:before
 			transform: translateY(-2px) rotate(-45deg)
@@ -217,18 +227,18 @@ body
 		transform: translate(-0.324vw, -0.567vw)
 
 .h1, h1
-	color: #213830
+	color: $color-darkgray
 	a 
-		color: #213830
+		color: $color-darkgray
 
 .h2, h2
-	color: #005e6d
+	color: $color-darkblue
 	a 
-		color: #005e6d
+		color: $color-darkblue
 
 .h1-white
 	font-weight: normal
-	color: #FFF
+	color: $color-white
 	font-size: 40px
 	transform: translate(-3px, -5px)
 	@media (min-width: 576px)
@@ -254,27 +264,27 @@ body
 		transform: translate(-0.243vw, -0.405vw)
 
 h3 
-	color: #97b2b0
+	color: $color-h3
 	a 
-		color: #97b2b0
+		color: $color-h3
 
 .h3 
-	color: #213830
+	color: $color-darkgray
 	a 
-		color: #213830
+		color: $color-darkgray
 
 .h4, h4
 	font-size: 22px
-	color: #213830
+	color: $color-darkgray
 	transform: translate(-3px, -5px)
 	@media (min-width: 1200px)
 		font-size: 1.943vw
 		transform: translate(-0.202vw, -0.405vw)
 	a 
-		color: #213830
+		color: $color-darkgray
 
 .h5, h5
-	color: #FFF
+	color: $color-white
 	font-weight: 300
 	font-size: 24px
 	margin-bottom: 16px
@@ -288,14 +298,14 @@ h3
 
 .h6, h6
 	font-size: 18px
-	color: #213830
+	color: $color-darkgray
 	font-weight: bold
 	transform: translate(-1px, -4px)
 	@media (min-width: 1200px)
 		font-size: 1.417vw
 		transform: translate(-0.121vw, -0.324vw)
 	a 
-		color: #213830
+		color: $color-darkgray
 
 p
 	line-height: 1.35
@@ -309,7 +319,7 @@ p
 
 .header-comment
 	font-size: 20px
-	color: #FFF
+	color: $color-white
 	transform: translate(-1px, -7px)
 	@media (min-width: 1200px)
 		font-size: 1.457vw
@@ -324,7 +334,7 @@ p
 		font-size: 2.02vw
 
 .mehr
-	color: #213830
+	color: $color-darkgray
 	position: relative
 	z-index: 1
 	&:after 
@@ -344,9 +354,9 @@ p
 
 .footer
 	margin-top: -1px
-	background: #213830
+	background: $color-darkgray
 	padding: 16px 0 50px
-	color: #FFF
+	color: $color-white
 	position: relative
 	z-index: 2
 	@media (min-width: 1950px)
@@ -354,7 +364,7 @@ p
 	.brand
 		margin-bottom: 0
 		.f 
-			color: #FFF
+			color: $color-white
 	.greenwood
 		img 
 			width: 120px
@@ -367,7 +377,7 @@ p
 		padding: 128px 0 50px
 	.links 
 		a		
-			color: #FFF
+			color: $color-white
 			display: inline-block
 			position: relative
 			z-index: 1
@@ -429,7 +439,7 @@ p
 				content: ""
 				top: 0
 				bottom: 0
-				background-color: rgba(217, 217, 217, 0.5)
+				background-color: $color-lines
 				transition: .5s
 				position: absolute 
 				width: 1px
@@ -455,7 +465,7 @@ p
 	right: 30px
 	bottom: 0
 	transition: $transition
-	border-top: 1px solid rgba(217, 217, 217, 0.5)
+	border-top: 1px solid $color-lines
 	@media (max-width: 1439.98px)
 		left: 16px
 		right: 16px
@@ -473,7 +483,7 @@ p
 			height: 1px
 			left: 0
 			right: 0
-			background-color: rgba(217, 217, 217, 0.5)
+			background-color: $color-lines
 			transition: .5s
 		&:before
 			bottom: 1px
@@ -484,7 +494,6 @@ p
 
 .main
 	margin-top: 16px
-	background: #FFF
 
 .img-wrap
 	width: 100%
@@ -619,17 +628,21 @@ p
 
 // POPUP
 
+.navbar-popup
+	pointer-events: none
+
 .bg-header
 	padding-top: 16px
 	margin-top: -16px
 	background-size: cover
 	background-position: center center
 
-.stabeko
-	color: #FFF
+.popup-logo
+	color: $color-white
 	font-size: 36px
 	display: inline-block
 	line-height: 0.8
+	pointer-events: initial
 	transform: translate(-3px, 0px)
 	&:hover
 		opacity: 0.7
@@ -639,6 +652,7 @@ p
 .close-popup
 	margin-left: auto
 	cursor: pointer
+	pointer-events: initial
 	width: 30px
 	height: 30px
 	position: relative
@@ -655,7 +669,7 @@ p
 		width: 30px
 		display: inline-block
 		transition: $transition
-		border-top: 3px solid #FFF
+		border-top: 3px solid $color-white
 		@media (min-width: 1950px)
 			width: 48px
 	&:before
@@ -664,7 +678,7 @@ p
 		transform: translate(-50%, -50%) rotate(45deg)
 
 .popup-1
-	grid-template-areas: "title . . ." ". . . ." ". . . ." ". . . ."
+	grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . ."
 	@media (max-width: 1199.98px)
 		grid-template-areas: "title ." ". ."
 	@media (max-width: 767.98px)
@@ -767,7 +781,7 @@ p
 		z-index: 1050
 		pointer-events: initial
 	.popup-top
-		background: #FFF
+		background: $color-white
 
 .modal-close
 	height: 100vh
@@ -779,7 +793,7 @@ p
 		font-size: 20px
 		font-weight: bold
 		display: block
-		color: #FFF
+		color: $color-white
 		transition: top $transition ease
 		@media (min-width: 1950px)
 			font-size: 1.053vw
@@ -800,4 +814,4 @@ p
 				right: 46px
 				z-index: 3
 				&:before, &:after
-					border-color: #000
+					border-color: $color-black
