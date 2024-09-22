@@ -65,8 +65,8 @@ body
 	@media (min-width: 1440px)
 		padding-left: 30px
 		padding-right: 30px
-	@media (min-width: 2010px)
-		max-width: 2010px
+	// @media (min-width: 2010px)
+	// 	max-width: 2010px
 
 .brand
 	transition: $transition
@@ -470,7 +470,7 @@ p
 		left: 16px
 		right: 16px
 	.row-horizontal
-		height: 11.4345vw
+		height: 13.583vw
 		position: relative
 		transition: .5s
 		@media (max-width: 1199.98px)
@@ -535,15 +535,20 @@ p
 	grid-template-columns: repeat(4, 1fr)
 	grid-column-gap: 30px
 	grid-row-gap: 16px
-	grid-auto-rows: calc(11.4345vw - 16px)
+	grid-auto-rows: calc(13.9vw - 16px)
 	margin-bottom: 16px
+	@media (max-width: 2009.98px)
+		grid-auto-rows: calc(13.76vw - 16px)
 	@media (max-width: 1439.98px)
 		grid-column-gap: 16px
+		grid-auto-rows: calc(14.285vw - 16px)
 	@media (max-width: 1199.98px)
 		grid-template-columns: repeat(2, 1fr)
-		grid-auto-rows: calc(22vw - 16px)
+		grid-auto-rows: calc(28vw - 16px)
+	@media (max-width: 767.98px)
+		grid-auto-rows: calc(13.923vw - 16px)
 	@media (max-width: 525.98px)
-		grid-auto-rows: calc(30vw - 16px)
+		grid-auto-rows: calc(27.68vw - 16px)
 
 .homepage-1
 	grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ."
