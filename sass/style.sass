@@ -470,13 +470,19 @@ p
 		left: 16px
 		right: 16px
 	.row-horizontal
-		height: 13.583vw
+		height: 13.9vw
 		position: relative
 		transition: .5s
+		@media (max-width: 2009.98px)
+			height: 13.76vw
+		@media (max-width: 1439.98px)
+			height: 14.285vw
 		@media (max-width: 1199.98px)
-			height: 22vw
+			height: 28vw
+		@media (max-width: 767.98px)
+			height: 28.2vw
 		@media (max-width: 525.98px)
-			height: 30vw
+			height: 31.25vw
 		&:before, &:after
 			content: ""
 			position: absolute 
@@ -546,9 +552,9 @@ p
 		grid-template-columns: repeat(2, 1fr)
 		grid-auto-rows: calc(28vw - 16px)
 	@media (max-width: 767.98px)
-		grid-auto-rows: calc(13.923vw - 16px)
+		grid-auto-rows: calc(28.2vw - 16px)
 	@media (max-width: 525.98px)
-		grid-auto-rows: calc(27.68vw - 16px)
+		grid-auto-rows: calc(31.25vw - 16px)
 
 .homepage-1
 	grid-template-areas: ". . . ." "picture1 picture1 title title" "picture1 picture1 title title" "picture1 picture1 comment ."
